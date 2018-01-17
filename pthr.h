@@ -1,6 +1,6 @@
 #include <ucontext.h>
-#include <vector>
+#include <queue>
 
-std::vector<ucontext_t *> contexts;
+std::queue<ucontext_t *> contexts;
 
-ucontext_t *schedule();
+bool schedule();
