@@ -1,3 +1,6 @@
 #include <ucontext.h>
+#include <vector>
 
-ucontext_t *schedule(ucontext_t *ncon);
+std::vector<ucontext_t *> contexts;
+
+ucontext_t *schedule();
