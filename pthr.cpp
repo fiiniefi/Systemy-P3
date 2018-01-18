@@ -15,7 +15,9 @@ bool schedule()
     return true;
 }
 
-void create(ucontext_t *ptr)
+void create(void (*ptr)(), int argc, int argv[])
 {
-    contexts.push(ptr);
+    ucontext_t *nthr = new ucontext_t();
+    makecontext(nthr, ptr, argc, argv);
+    contexts.push(nthr);
 }
