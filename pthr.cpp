@@ -14,3 +14,8 @@ bool schedule()
     contexts.push(prev);
     return true;
 }
+
+void create(ucontext_t *ptr)
+{
+    contexts.push(ptr);
+}

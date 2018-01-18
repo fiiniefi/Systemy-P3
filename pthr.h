@@ -4,4 +4,4 @@
 std::queue<ucontext_t *> contexts;
 
 bool schedule();
-bool create(void (*ptr)(...));
+void create(ucontext_t *ptr);
