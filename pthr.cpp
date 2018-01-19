@@ -21,3 +21,11 @@ void create(void (*ptr)(), int argc, int argv[])
     makecontext(nthr, ptr, argc, argv);
     contexts.push(nthr);
 }
+
+void join(ucontext_t *threadid)
+{
+    ucontext_t *now = new ucontext_t();
+    getcontext(now);
+    while (threadid == now);
+    schedule();
+}
