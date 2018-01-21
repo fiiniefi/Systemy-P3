@@ -1,9 +1,8 @@
 #include <iostream>
+#include "tests.h"
 
-using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
-    return 0;
+    bin_sem_test1(10);
 }
