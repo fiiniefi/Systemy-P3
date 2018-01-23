@@ -2,6 +2,7 @@
 #include <ucontext.h>
 #include <stdexcept>
 
+std::queue<ucontext_t *> contexts;
 
 bool schedule()
 {
