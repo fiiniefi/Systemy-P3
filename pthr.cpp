@@ -6,7 +6,7 @@ std::queue<ucontext_t *> contexts;
 
 bool schedule()
 {
-    if (contexts.size() == 0)
+    if (contexts.empty())
         return false;
     ucontext_t *prev;
     if (swapcontext(prev, contexts.front()))
@@ -16,11 +16,13 @@ bool schedule()
     return true;
 }
 
-void create(void (*ptr)(), int argc, int argv[])
+ucontext_t *create(void (*ptr)(), int argc, int argv[])
 {
     ucontext_t *nthr = new ucontext_t();
+    nthr->uc_stack.ss_size = argc;
     makecontext(nthr, ptr, argc, argv);
     contexts.push(nthr);
+    return nthr;
 }
 
 void join(ucontext_t *threadid)
